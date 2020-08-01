@@ -116,7 +116,7 @@ export default {
     */
     addGate(gateName, gateWires) {
       this.addCustomGate({
-        name: "c" + gateWires + "_" + gateName+".0",
+        name: "c" + gateWires + "_" + gateName+".100",
         id: gateName,
         wires: gateWires
       });

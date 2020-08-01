@@ -41,6 +41,7 @@
           v-if="element.name[0]=='c' && element.name[1]!='1'"
           class="custom-gate-order"
         >
+          <option value="100" disabled selected hidden></option>
           <option
             v-for="(item,order) in parseInt(element.name[1])"
             :key="order"
