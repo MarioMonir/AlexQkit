@@ -43,6 +43,7 @@
       <option v-for="(item, index) in algorithms" :key="index" :value="item">{{ item.name }}</option>
     </select>
     <!-- end Select Algorithm Block -->
+    <button @click="test" >test show </button>
   </div>
 </template>
 <!-- =============================================================  -->
@@ -96,7 +97,7 @@ export default {
     ...mapActions(["setCountSpecialGates"]),
     ...mapActions(["storeLocal"]),
     ...mapActions(["getLocal"]),
-
+    test(){window.console.log(this.jsonObject.rows)},
     cloneResetSystem: function() {
       // just reset the system by the function in clone Component
       this.$parent.resetSystem();

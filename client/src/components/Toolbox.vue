@@ -245,12 +245,10 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
 }
-
 textarea:focus,
 input:focus {
   outline: none;

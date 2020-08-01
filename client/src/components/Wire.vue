@@ -12,7 +12,7 @@
     </label>
     <!---end-wire-qubit-name-->
     <button class="qubit-state" :id="'q' + id + '-0'" @click="qubitState">|{{ state }}⟩</button>
-    <hr class="wire-hr" />
+    <!-- <hr class="wire-hr" /> -->
     <!-- Wire Drop Area (Gates Place)-->
     <draggable
       class="wire-drop-area"
@@ -34,7 +34,8 @@
         :col="'_'+(index+1)"
       >
         <!-- static hard coding block in case of custom gate-->
-        {{element.name[0]=='c'? element.name.slice(3) : element.name }}
+        <!--{{element.name[0]=='c'? element.name.slice(3): element.name }}-->
+        {{element.name|gateName}}
         <select
           @change="setOrderId"
           v-if="element.name[0]=='c' && element.name[1]!='1'"
@@ -162,7 +163,7 @@ export default {
       } else if (evt.clone.id[0] == "c") {
         this.setCountCustoms(1);
       } else if (evt.clone.id[0] == "l") {
-        window.console.log("add conditional loop");
+        //window.console.log("add conditional loop");
       }
       this.$parent.updateMaxWire();
     },
@@ -286,23 +287,26 @@ export default {
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  z-index: 0;
+  z-index: 1;
   margin: 5px 0px;
+  background-size: contain;
+  background-image: url("../assets/wire2.png");
+ 
 
 }
 .wire-drop-area {
   height: 37px;
   display: flex;
   flex-basis: 75%;
+
 }
 .wire-hr {
   position: fixed;
   position: -webkit-sticky;
-
   stroke-width: 10;
   width: 100%;
   margin: 0px;
-  z-index: -4;
+  z-index:0;
   stroke: black;
   color: black;
 }
@@ -355,7 +359,7 @@ export default {
   width: 35px;
   height: 35px;
   background-color: #5d6d7e;
-  z-index: 0;
+  z-index: 1;
 }
 .custom-gate-order {
   display: flex;

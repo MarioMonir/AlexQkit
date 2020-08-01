@@ -68,10 +68,10 @@ export default {
           indices: indices
         })
         .then(res => {
-          window.console.log(indices);
+          // window.console.log(indices);
           if (indices[0] == "") {
             indices = [...Array(variablesToValidate.length + 1).keys()];
-            window.console.log(indices);
+            // window.console.log(indices);
           }
 
           //convert variables names to wires names
@@ -80,7 +80,7 @@ export default {
             name = name.replace(variablesToValidate[i], "q" + indices[i]);
           }
           name = "q" + indices[indices.length - 1] + "=" + name;
-          window.console.log(res.data);
+          // window.console.log(res.data);
           var algorithmObject = { name: name, circuit: res.data };
           this.$parent.$parent.setAlgorithm(algorithmObject, true);
         });
@@ -109,7 +109,7 @@ export default {
       var arrayofvariables;
       var regex = /^[a-z A-Z]+([0-9]+)?$/;
       arrayofvariables = variables.split(",");
-      window.console.log(arrayofvariables);
+      //window.console.log(arrayofvariables);
 
       // check if the variables input is empty
       var { isempty, msg } = this.inputisempty(variables);
@@ -155,7 +155,7 @@ export default {
        correct or not 
     */
     ValidateExpressionFnAndIndices(expression, dicvar,indices) {
-      window.console.log(dicvar);
+      //window.console.log(dicvar);
       var ValidateExpression = true;
       var msgEx = "";
 
@@ -164,7 +164,7 @@ export default {
       if (isempty == true) {
         msgEx = msg;
         ValidateExpression = false;
-        window.console.log(ValidateExpression);
+       //window.console.log(ValidateExpression);
         return { ValidateExpression, msgEx };
       }
 

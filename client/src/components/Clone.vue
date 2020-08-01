@@ -223,14 +223,15 @@ export default {
     setAlgorithm: function(
       algorithmObject,
       append = true,
-      circuitBlock = true
+      //circuitBlock = true
     ) {
+      /*
       if (circuitBlock) {
         var fromColumn = this.jsonObject.colsCount; // for circuitBlock
         if (!append) {
           fromColumn = 0;
         }
-      }
+      }*/
       
       //this.jsonObject.colsCount +=  algorithmObject.circuit.rows[0];
       this.jsonObject.wires = Math.max(algorithmObject.circuit.wires,this.jsonObject.wires);
@@ -255,6 +256,7 @@ export default {
         this.updateMaxWire();
 
         // for circuitBlock
+        /*
         if (circuitBlock) {
           var toColumn = this.jsonObject.colsCount;
           this.liveResults.circuitBlocks.push({
@@ -262,7 +264,8 @@ export default {
             fromColumn: fromColumn,
             toColumn: toColumn
           });
-        }
+        }*/
+        
       });
     },
     //-----------------------------------------------------------------------

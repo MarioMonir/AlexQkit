@@ -101,11 +101,11 @@ export default {
   },
 
   setCountSpecialGates: (state) => {
-    window.console.log("counting the special gates")
+    // window.console.log("counting the special gates")
     state.specialGatesCounter = { controls: 0, swaps: 0, customs: 0 };
     for (let i = 0; i < state.jsonObject.rows; i++) {
       for (let j = 0; j < state.jsonObject.colsCount; j++) {
-        window.console.log(state.jsonObjectObject.rows[i][j])
+        // window.console.log(state.jsonObjectObject.rows[i][j])
         if (state.jsonObjectObject.rows[i][j] == '●' || state.jsonObjectObject.rows[i][j] == '○') {
           state.specialGatesCounter.controls++;
         } else if (state.jsonObjectObject.rows[i][j] == 'Swap') {
@@ -173,7 +173,7 @@ export default {
       dicindices[indx+"."+value]=value;
     }
   }
-  window.console.log(dicindices);
+  // window.console.log(dicindices);
 
 
   for (let col = 0; col < state.jsonObject.colsCount; col++) {
@@ -201,7 +201,7 @@ export default {
       
       }
     }
-    window.console.log(dicorder);
+    // window.console.log(dicorder);
     
 
     for (let indx in dicCount) {
@@ -223,7 +223,7 @@ export default {
   /*=== Server Functions ==*/
   sendCircuit: (state) => {
     try {
-      window.console.log(state.jsonObject)
+      // window.console.log(state.jsonObject)
       axios.post(appRoute, state.jsonObject).then(
         (res) => {
           if (res.data.conditionalLoopError == undefined) {

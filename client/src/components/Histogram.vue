@@ -24,13 +24,16 @@ export default {
     chartOptions() {
       return {
         title: "Circuit Histogram",
-        explorer: { axis: "horizontal" },
         chartArea: {
-          width: Math.max(this.liveResults.chart.length * 50, 250)
+          
+          width: this.liveResults.chart.length * 50
         },
-        vAxis: {
-          maxValue: 1
-        }
+         vAxis: {
+            viewWindow: {
+              max:1,
+              min:0
+            }
+        },
       };
     }
   }

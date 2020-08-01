@@ -104,6 +104,8 @@ export default {
   border-radius: 0.5em;
   background: black;
   overflow:auto;
+
+  z-index: 3;
 }
 .matrix-label {
   margin: 0px 0px 20px 0px;

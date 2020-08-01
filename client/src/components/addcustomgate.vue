@@ -116,7 +116,7 @@ export default {
     */
     addGate(gateName, gateWires) {
       this.addCustomGate({
-        name: "c" + gateWires + "_" + gateName+"."+(gateWires-1),
+        name: "c" + gateWires + "_" + gateName+".0",
         id: gateName,
         wires: gateWires
       });
@@ -299,7 +299,6 @@ export default {
       */
       var select = document.getElementById("rootGate");
       var name = select.options[select.selectedIndex].value;
-      window.console.log(name);
       var num_qubits = 1;
       if (name[0] == "c") {
         // for custom gates   "c<num_qubits>_<name>"
@@ -367,7 +366,7 @@ div {
   top: 0;
   left: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   background-color: rgba(103, 106, 97, 0.55);
   overflow-x: hidden;
   transition: 0.5s;
@@ -384,19 +383,16 @@ div {
   display: block;
   transition: 0.3s;
 }
-
 .overlay a:hover,
 .overlay a:focus {
   color: #f1f1f1;
 }
-
 .overlay .closebtn {
   position: absolute;
   top: 20px;
   right: 45px;
   font-size: 30px;
 }
-
 @media screen and (max-height: 450px) {
   .overlay a {
     font-size: 20px;
@@ -407,7 +403,6 @@ div {
     right: 35px;
   }
 }
-
 .column {
   background: rgb(47, 68, 85, 0.7);
   margin: 3em;

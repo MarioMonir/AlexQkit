@@ -14,12 +14,6 @@ export default {
 </script>
 
 <style>
-body {
-  background-color: white ;
-}
-
-
-
 .im {
   text-align: center;
 }
@@ -28,43 +22,35 @@ body {
   color: #2c3e50;
   margin-top: 0px;
   box-sizing: border-box;
-
 }
 .cline{
   position: absolute;
   background-color: black;
-  z-index :-1;
+  z-index :0;
 }
 .toolbox-gates , .circuit-gate {
   font-weight: bolder;
 }
-
 #X , #Y ,#Z{
-
   background:#306BA2;
 }
 #○,
 #●{
-
   background:#4390FC;
 }
 #M{
-
   background:#C8D82D;
 }
 #H{
-
   background:#5E5E8C;
 }
 #S , #T{
-
   background:#198C9B;
 }
 #Sdg , #Tdg{
   font-weight: bold;
   background: #3FB979;
 }
-
 #Rx,#Ry,#Rz{
   background:#FF8C61;
 }
