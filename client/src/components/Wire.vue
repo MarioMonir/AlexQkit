@@ -217,11 +217,11 @@ export default {
       this.setState("0");
     },
     //-----------------------------------------------------------------------
-    getGates: function(rowId) {
+    getGates: function(/*rowId*/) {
       var gates = [];
       for (let colIdx = 0; colIdx < this.list.length; colIdx++) {
         if (this.list[colIdx]["name"][0] == "c") {
-          window.console.log("custom here at " + this.id + " at col " + rowId);
+          // window.console.log("custom here at " + this.id + " at col " + rowId);
           gates.push(this.list[colIdx]["name"]);
         } else {
           gates.push(this.list[colIdx]["name"]);
@@ -276,7 +276,7 @@ export default {
       };
       this.setWire(wire);
       this.$parent.updateMaxWire();
-      window.console.log(this.jsonObject.rows);
+      //window.console.log(this.jsonObject.rows);
     }
   }
 };

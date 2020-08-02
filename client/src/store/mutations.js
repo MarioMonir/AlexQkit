@@ -220,7 +220,7 @@ export default {
         else if (parseInt(indx.substring(indx.indexOf(".") + 1, indx.length)) != dicorder[indx]) {
           if (dicorder[indx] % parseInt(indx.substring(indx.indexOf(".") + 1, indx.length)) != 0) {
             state.messages.violation.push("gate " + indx.substring(3, indx.indexOf(".")) + " in column " + (col + 1) + " has a repeated indices");
-            window.console.log(dicorder[indx], parseInt(indx.substring(indx.indexOf(".") + 1, indx.length)));
+            //window.console.log(dicorder[indx], parseInt(indx.substring(indx.indexOf(".") + 1, indx.length)));
           }
           else {
             if (dicorder[indx] - parseInt(indx.substring(indx.indexOf(".") + 1, indx.length)) == 100 && dicorder[indx] % 100 != 0) {
@@ -256,7 +256,7 @@ export default {
         },
       );
     } catch (error) {
-      window.console.log("i think there is an error " + error);
+      //window.console.log("i think there is an error " + error);
     }
   },
 
