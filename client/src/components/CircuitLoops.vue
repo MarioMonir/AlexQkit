@@ -93,8 +93,13 @@ export default {
       }
       //end
       this.jsonObject["repeated"] = repeated; // should be setter
-      // let message = {messageType:'advanced',messageBody:repeated}
-      this.addMessage({ messageType: "advanced", messageBody: repeated });
+       var messages = [];
+       for(let i = 0 ; i < repeated.listOfPos.length ; i++){
+         var message =` ${listOfRep[i]}  Loops from col : ${listOfPos[i][0]}  to   ${listOfPos[i][1]} `;
+         messages.push(message);
+       }
+       
+      this.addMessage({ messageType: "advanced", messageBody: [...messages] });
       //window.console.log(this.$parent.$parent.jsonObject)
       this.closeNav();
     },
