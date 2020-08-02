@@ -159,64 +159,77 @@ export default {
   */
  wirescustom: (state) => {
   let dicwire = {};
-  let dicindices={};
-  
-  for (let indx in state.gates) {
-    if (state.gates[indx]["wires"]) {
-      var wire = state.gates[indx]["wires"];
-      var name = state.gates[indx]["name"] .substring(0,state.gates[indx]["name"].indexOf("."));
-      dicwire[name] = wire;
-    }
-  }
-  for (let indx in dicwire){
-    for(let value = 0; value<dicwire[indx]; value++){
-      dicindices[indx+"."+value]=value;
-    }
-  }
-  // window.console.log(dicindices);
-
-
-  for (let col = 0; col < state.jsonObject.colsCount; col++) {
-    let dicCount = {};
-    let dicorder ={};
-    for (let row = 0; row < state.jsonObject.wires; row++) {
-      if (state.jsonObject.rows[row][col][0]=="c") {
-        var nameOfGateInJson = state.jsonObject.rows[row][col];  //c1_x.0
-        var order =nameOfGateInJson .substring(nameOfGateInJson .indexOf(".")+1); 
-       var nameofgate = nameOfGateInJson .substring(0, nameOfGateInJson .indexOf(".")); //c1_x
-        if (!(nameofgate in dicCount)) {
-          dicCount[nameofgate] = 1;
-        }
-        else {
-          dicCount[nameofgate] += 1;
-        }
-        
-        if (!(nameOfGateInJson  in dicorder)) {
-          dicorder[nameOfGateInJson] = parseInt(order);
-        }
-        else{
-          dicorder[nameOfGateInJson] += 1 ;
-          dicorder[nameOfGateInJson] +="d";
-        }
-      
+    for (let indx in state.gates) {
+      if (state.gates[indx]["wires"]) {
+        var wire = state.gates[indx]["wires"];
+        var name = state.gates[indx]["name"].substring(0, state.gates[indx]["name"].indexOf("."));
+        dicwire[name] = wire;
       }
     }
-    // window.console.log(dicorder);
-    
 
-    for (let indx in dicCount) {
-      var count = dicCount[indx];
-      if (indx in dicwire) {
-        var wires = dicwire[indx];
-        if (count != wires) {
-         // var indxForRealname = indx.indexOf("_"); 
-         // window.console.log(indxForRealname);
-          var realname=indx.substring(indx.indexOf("_")+1); 
-          state.messages.violation.push("gate " + realname+" at column " + (col + 1) + " can be put only for " + wire + " wires" + " not " + dicCount[nameofgate]);
+    for (let col = 0; col < state.jsonObject.colsCount; col++) {
+      let dicCount = {};
+      let dicorder = {};
+      for (let row = 0; row < state.jsonObject.wires; row++) {
+        if (state.jsonObject.rows[row][col][0] == "c") {
+          var nameOfGateInJson = state.jsonObject.rows[row][col];  //c1_x.0
+          var order = nameOfGateInJson.substring(nameOfGateInJson.indexOf(".") + 1);
+          // window.console.log("order" + order);
+          var nameofgate = nameOfGateInJson.substring(0, nameOfGateInJson.indexOf(".")); //c1_x
+          if (!(nameofgate in dicCount)) {
+            dicCount[nameofgate] = 1;
+          }
+          else {
+            dicCount[nameofgate] += 1;
+          }
+
+          if (!(nameOfGateInJson in dicorder)) {
+            dicorder[nameOfGateInJson] = parseInt(order);
+          }
+          else {
+            dicorder[nameOfGateInJson] += 100;
+
+          }
+        }
+      }
+      // window.console.log(dicorder);
+      for (let indx in dicCount) {
+        var count = dicCount[indx];
+        if (indx in dicwire) {
+          var wires = dicwire[indx];
+          if (count != wires) {
+
+            var realname = indx.substring(indx.indexOf("_") + 1);
+            state.messages.violation.push("gate " + realname + " at column " + (col + 1) + " can be put only for " + wire + " wires" + " not " + dicCount[nameofgate]);
+          }
+        }
+      }
+      for (let indx in dicorder) {
+        // window.console.log(
+        //   "ind", indx
+        // );
+        //get the number of the wire to compare
+        if (dicorder[indx] / 100 == dicwire[indx.substring(0, indx.indexOf("."))]) {
+          var alerted = localStorage.getItem('alerted') || '';
+          if (alerted != 'yes') {
+            alert(indx.substring(3, indx.indexOf(".")) + "'s input will orderd by the wires if you doesn't change in value of selectbox");
+            localStorage.setItem('alerted', 'yes');
+          }
+        }
+
+        else if (parseInt(indx.substring(indx.indexOf(".") + 1, indx.length)) != dicorder[indx]) {
+          if (dicorder[indx] % parseInt(indx.substring(indx.indexOf(".") + 1, indx.length)) != 0) {
+            state.messages.violation.push("gate " + indx.substring(3, indx.indexOf(".")) + " in column " + (col + 1) + " has a repeated indices");
+            window.console.log(dicorder[indx], parseInt(indx.substring(indx.indexOf(".") + 1, indx.length)));
+          }
+          else {
+            if (dicorder[indx] - parseInt(indx.substring(indx.indexOf(".") + 1, indx.length)) == 100 && dicorder[indx] % 100 != 0) {
+              state.messages.violation.push("gate " + indx.substring(3, indx.indexOf(".")) + " in column " + (col + 1) + " has a repeated indices");
+            }
+          }
         }
       }
     }
-  }
 },
 
   /* ================================================================= */
