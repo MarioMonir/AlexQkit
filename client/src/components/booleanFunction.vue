@@ -29,6 +29,7 @@
 
 <script>
 import axios from "axios";
+import { booleanExpressionRoute } from "./../data/routes.js";
 export default {
   name: "createBoolean",
   display: "createBoolean",
@@ -62,7 +63,7 @@ export default {
         
       );
         if (variablesValidate && ValidateExpression) {
-           axios.post("http://127.0.0.1:5000/booleanExpression", {
+           axios.post(booleanExpressionRoute, {
           vars: this.variables,
           fn: this.expression,
           indices: indices

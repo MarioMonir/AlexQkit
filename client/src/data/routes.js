@@ -1,19 +1,22 @@
 // we should put all routes here
-export const serverRoute = "http://localhost:5000/";
-export const appRoute = "http://localhost:5000/draggableCircuit";
-export const qasmRoute = "http://localhost:5000/qasm";
+
+export const port = "http://localhost:5000/";
+
+export const serverRoute = port;
+export const appRoute = port + "draggableCircuit";
+export const qasmRoute = port + "qasm";
+
+export const qasmCircuitRoute = port + "circuit.png?time=";
+export const elementaryGates = port + "elementaryGates";
+export const customGates = port + "subCircuitCustomGate";
+export const subCirciutRoute = port + "subCircuitCustomGate";
+export const nthRootRoute = port + "nthRoot";
+export const matrixRepresentationRoute = port + "matrixRepresentation";
+export const addCustomGates = port + "addCustomGates";
+export const defaultBlochSphereRoute = port + "blochsphere.png";
+export const defaultQasmCircuitRoute = port + "circuit.png";
+export const booleanExpressionRoute = port + "booleanExpression";
 export const ibmLink = "https://quantum-computing.ibm.com/account";
-export const qasmCircuitRoute = "http://127.0.0.1:5000/circuit.png?time=";
-export const elementaryGates = "http://localhost:5000/elementaryGates";
-export const customGates = "http://localhost:5000/subCircuitCustomGate";
-export const subCirciutRoute = "http://localhost:5000/subCircuitCustomGate";
-export const nthRootRoute = "http://localhost:5000/nthRoot";
-export const matrixRepresentationRoute ="http://localhost:5000/matrixRepresentation";
-export const addCustomGates = "http://localhost:5000/addCustomGates";
-export const defaultBlochSphereRoute = "http://127.0.0.1:5000/blochsphere.png";
-export const defaultQasmCircuitRoute = "http://127.0.0.1:5000/circuit.png";
-
-
 
 // export const resetRoute = "http://localhost:5000/reset";
 // export const histogramRoute  = "http://127.0.0.1:5000/chart.png?time";
