@@ -157,8 +157,8 @@ export default {
     and compare it with real wires for this gate .
     
   */
- wirescustom: (state) => {
-  let dicwire = {};
+  wirescustom: (state) => {
+    let dicwire = {};
     for (let indx in state.gates) {
       if (state.gates[indx]["wires"]) {
         var wire = state.gates[indx]["wires"];
@@ -184,15 +184,19 @@ export default {
           }
 
           if (!(nameOfGateInJson in dicorder)) {
+            var checkNan=nameOfGateInJson.includes("√")
+            //window.console.log(checkNan,"nan")
+            if(checkNan != true){
             dicorder[nameOfGateInJson] = parseInt(order);
           }
+        }
           else {
             dicorder[nameOfGateInJson] += 100;
-
           }
         }
+        
       }
-      // window.console.log(dicorder);
+       window.console.log(dicorder);
       for (let indx in dicCount) {
         var count = dicCount[indx];
         if (indx in dicwire) {
@@ -210,17 +214,22 @@ export default {
         // );
         //get the number of the wire to compare
         if (dicorder[indx] / 100 == dicwire[indx.substring(0, indx.indexOf("."))]) {
+          window.console.log("true");
           var alerted = localStorage.getItem('alerted') || '';
           if (alerted != 'yes') {
             alert(indx.substring(3, indx.indexOf(".")) + "'s input will orderd by the wires if you doesn't change in value of selectbox");
             localStorage.setItem('alerted', 'yes');
           }
+          // alert(indx.substring(3, indx.indexOf(".")) + "'s input will orderd by the wires if you doesn't change in value of selectbox");
+
         }
 
         else if (parseInt(indx.substring(indx.indexOf(".") + 1, indx.length)) != dicorder[indx]) {
           if (dicorder[indx] % parseInt(indx.substring(indx.indexOf(".") + 1, indx.length)) != 0) {
             state.messages.violation.push("gate " + indx.substring(3, indx.indexOf(".")) + " in column " + (col + 1) + " has a repeated indices");
-            //window.console.log(dicorder[indx], parseInt(indx.substring(indx.indexOf(".") + 1, indx.length)));
+            window.console.log(dicorder[indx], parseInt(indx.substring(indx.indexOf(".") + 1, indx.length)));
+            
+
           }
           else {
             if (dicorder[indx] - parseInt(indx.substring(indx.indexOf(".") + 1, indx.length)) == 100 && dicorder[indx] % 100 != 0) {
@@ -230,7 +239,7 @@ export default {
         }
       }
     }
-},
+  },
 
   /* ================================================================= */
   /*=== Server Functions ==*/
@@ -256,7 +265,7 @@ export default {
         },
       );
     } catch (error) {
-      //window.console.log("i think there is an error " + error);
+      window.console.log("i think there is an error " + error);
     }
   },
 
