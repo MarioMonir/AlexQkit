@@ -62,11 +62,8 @@ export default {
     sendto() {
       // validation for ibm 
       this.ibmtoken=this.ibmtoken.replace(/\s/g, "");
-      if(this.ibmtoken.length != 64){
-        alert("ibmtoken was entered isn't correct");
-        }
       var{isempty,msg}=this.inputisempty(this.ibmtoken)
-
+      msg="you have to enter your ibm token";
       //
       if (/*this.checkboxibm && */!isempty) {
         this.jsonObject.API_TOKEN = this.ibmtoken;
@@ -83,9 +80,9 @@ export default {
         alert(msg);
 
       } 
-      else {
-        alert("make sure to select the checkbox to run on IBMQ devices");
-      }
+      // else {
+      //   alert("make sure to select the checkbox to run on IBMQ devices");
+      // }
     },
     // ----------------------------------------------------
     /*
