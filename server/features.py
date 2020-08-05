@@ -94,7 +94,7 @@ class Features():
 
         col = ["i"]*columnLen
         col[controlsPos[0]] = columns[columnPos][controlsPos[0]]
-        col[controlsPos[1]] = "x"
+        col[controlsPos[1]] = "X"
         for k in range(len(controlsPos)-2):
             col[controlsPos[k+2]] = columns[columnPos][controlsPos[k+2]]
         columns.insert(columnPos+1, col)
@@ -109,7 +109,7 @@ class Features():
 
         col = ["i"]*columnLen
         col[controlsPos[0]] = columns[columnPos][controlsPos[0]]
-        col[controlsPos[1]] = "x"
+        col[controlsPos[1]] = "X"
         for k in range(len(controlsPos)-2):
             col[controlsPos[k+2]] = columns[columnPos][controlsPos[k+2]]
         columns.insert(columnPos+1, col)
