@@ -48,7 +48,7 @@ class Results():
         """
         simulator=Aer.get_backend('statevector_simulator')
         result=execute(self.circuit,backend=simulator).result()
-        statevector=result.get_statevector(decimals=4)
+        statevector=result.get_statevector(decimals=4) #"decimals=4" doesn't work in version 0.20.0 
         return statevector.tolist()
     
 ###############################################################################################################################
@@ -66,7 +66,7 @@ class Results():
         for i in range(len(self.statevector)):
             #the next line finds the inverse position in decimal ex.. 3 -> 011 -> 110 -> 6
             pos=int(''.join(reversed(str(("{0:0"+str(self.num_qubits).replace('.0000','')+"b}").format(i)))),2)
-            reversedStatevector.append(self.statevector[pos])
+            reversedStatevector.append(round(self.statevector[pos].real, 4) + round(self.statevector[pos].imag, 4)*1j)
         return reversedStatevector
         
 ###############################################################################################################################
