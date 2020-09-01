@@ -122,8 +122,8 @@ export default {
     },
     // Validate the number of shots  
     inputisempty() {
-      if (this.shots.length) {
-        alert("number of shots will be add 1024 if you entered nothing");
+      if (this.shots.length==0) {
+        alert("number of shots will be 1024 if you entered nothing");
         this.jsonObject.shots = 1024;
       } else {
         this.jsonObject.shots = this.shots;
