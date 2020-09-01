@@ -13,7 +13,7 @@ class BooleanFunction:
         optmiziedEqn = cls().optmizationCancelation(productNormalForm) # Optmize the equation if two similar terms are exist .
         optmiziedEqn = cls().term_XOR_one(optmiziedEqn)# Check if there is one on the last normal form equation
         dicOfVariabels = {} 
-        target = "x"
+        target = "X"
         closedControll = "●"
         openControll = "○"
         dicOfVariabels = cls().assignOrderOfVaribles(variables) # Dictionary for assign variables ordere
