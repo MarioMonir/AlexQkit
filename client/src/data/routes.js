@@ -1,6 +1,7 @@
 // we should put all routes here
 
-export const port = "http://localhost:5000/";
+
+export const port = "http://165.22.18.235/";
 
 export const serverRoute = port;
 export const appRoute = port + "draggableCircuit";
